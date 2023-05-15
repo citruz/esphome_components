@@ -117,7 +117,7 @@ void OBISComponent::handle_line(char *line) {
         ESP_LOGW(
           TAG,
           "Unit of measurement mismatch for field '%s': "
-          "'%s' is configured, but '%s' was sent.,
+          "'%s' is configured, but '%s' was sent.",
           field,
           channel.second->get_unit_of_measurement().c_str(),
           unit);
