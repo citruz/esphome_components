@@ -42,8 +42,6 @@ See [1, page 20] for documentation of fields.
 [1] https://www.easymeter.com/downloads/products/zaehler/Q3D/Easymeter_Q3D_DE_2016-06-15.pdf
 */
 
-using namespace std;
-
 namespace esphome {
 namespace obis {
 
@@ -53,25 +51,25 @@ class OBISChannelBase {
   friend class OBISComponent;
 
  public:
-  void set_channel(string channel) { channel_ = channel; }
+  void set_channel(std::string channel) { channel_ = channel; }
   virtual void publish(const char *value) = 0;
-  virtual string get_unit_of_measurement() = 0;
+  virtual std::string get_unit_of_measurement() = 0;
 
  protected:
-  string channel_;
+  std::string channel_;
 };
 
 class OBISChannel : public sensor::Sensor, public OBISChannelBase {
   void publish(const char *value) override;
 
-  string get_unit_of_measurement() override {
+  std::string get_unit_of_measurement() override {
     return sensor::Sensor::get_unit_of_measurement();
   }
 };
 
 class OBISTextChannel : public text_sensor::TextSensor, public OBISChannelBase {
  public:
-  string get_unit_of_measurement() override { return ""; }
+  std::string get_unit_of_measurement() override { return ""; }
   void publish(const char *value) override;
 };
 
